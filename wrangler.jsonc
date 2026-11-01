@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cloudysuite",
+  "main": "src/server.ts",
+  "compatibility_date": "2026-10-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cloudysuite",
+      "database_id": "417f522d-9d5b-4fb5-aa96-3840a6d25f28",
+      "migrations_dir": "migrations",
+      "migrations_pattern": "migrations/*/migration.sql",
+    },
+  ],
+  "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "cloudysuite","preview_bucket_name": "cloudysuite" }],
+  "durable_objects": {
+    "bindings": [{ "name": "MAILBOX", "class_name": "Mailbox" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Mailbox"] }],
+  "send_email": [{ "name": "EMAIL" }],
+  "version_metadata": { "binding": "CF_VERSION_METADATA" },
+}
